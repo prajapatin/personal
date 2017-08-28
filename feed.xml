@@ -5,17 +5,17 @@
     <description>It is all about software architecture</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 26 Aug 2017 23:26:52 +0530</pubDate>
-    <lastBuildDate>Sat, 26 Aug 2017 23:26:52 +0530</lastBuildDate>
+    <pubDate>Mon, 28 Aug 2017 21:00:35 +0530</pubDate>
+    <lastBuildDate>Mon, 28 Aug 2017 21:00:35 +0530</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+        <title>Welcome to nileshprajapati.net!</title>
+        <description>&lt;p&gt;It is been long time I have written blogs and thought of restarting it after many years of pause. I am writing this first introductory blog after a long pause, I would be sharing my technical knowledge I acquired during my past working experience on this website.&lt;/p&gt;
 
-&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;p&gt;I would appreciate if you can provide your comments on whatever subjects I would be sharing during subsequent days/months/years so that I can improve myself and share something back to community.&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;p&gt;I would be using following source code format in my subsequent blogs:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
@@ -23,17 +23,15 @@
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can connect with me through &lt;a href=&quot;https://linkedin.com/in/nileshprajapati&quot;&gt;my linkedin profile&lt;/a&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Thu, 26 Nov 2015 19:16:52 +0530</pubDate>
-        <link>http://localhost:4000/blog/2015/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/welcome-to-jekyll/</guid>
+        <pubDate>Mon, 28 Aug 2017 00:43:00 +0530</pubDate>
+        <link>http://localhost:4000/blog/2017/welcome-to-nileshprajapati.net/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2017/welcome-to-nileshprajapati.net/</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>uncategorized</category>
         
       </item>
     
