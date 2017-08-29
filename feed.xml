@@ -5,8 +5,8 @@
     <description>It is all about software architecture</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Aug 2017 11:32:57 +0530</pubDate>
-    <lastBuildDate>Tue, 29 Aug 2017 11:32:57 +0530</lastBuildDate>
+    <pubDate>Tue, 29 Aug 2017 14:52:59 +0530</pubDate>
+    <lastBuildDate>Tue, 29 Aug 2017 14:52:59 +0530</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
@@ -26,13 +26,9 @@
         <link>http://localhost:4000/blog/2017/what-is-micro-services-architecture/</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2017/what-is-micro-services-architecture/</guid>
         
-        <category>Microservices,</category>
+        <category>Microservices</category>
         
-        <category>Azure</category>
-        
-        <category>Service</category>
-        
-        <category>Fabric</category>
+        <category>Azure Service Fabric</category>
         
         
         <category>Architecture</category>
@@ -60,8 +56,10 @@
         <link>http://localhost:4000/blog/2017/welcome-to-nileshprajapati.net/</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2017/welcome-to-nileshprajapati.net/</guid>
         
+        <category>welcome</category>
         
-        <category>uncategorized</category>
+        
+        <category>Welcome</category>
         
       </item>
     
@@ -102,9 +100,7 @@
         <guid isPermaLink="true">http://localhost:4000/blog/2015/lorem-ipsum-dolor-sit/</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>Uncategorized</category>
         
       </item>
     
@@ -145,7 +141,7 @@
         <guid isPermaLink="true">http://localhost:4000/blog/2015/lorem/</guid>
         
         
-        <category>welcome</category>
+        <category>Welcome</category>
         
       </item>
     
@@ -180,7 +176,7 @@
         <category>welcome</category>
         
         
-        <category>welcome</category>
+        <category>Welcome</category>
         
       </item>
     
@@ -211,7 +207,7 @@
         <category>welcome</category>
         
         
-        <category>welcome</category>
+        <category>Welcome</category>
         
       </item>
     
@@ -244,7 +240,7 @@
         <category>welcome</category>
         
         
-        <category>welcome</category>
+        <category>Welcome</category>
         
       </item>
     
@@ -279,7 +275,7 @@
         <category>welcome</category>
         
         
-        <category>welcome</category>
+        <category>Welcome</category>
         
       </item>
     
