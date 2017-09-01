@@ -63,6 +63,9 @@
       
       
       <a href="/categories/#Cloud" class="post-tag">Cloud</a>
+      &nbsp;
+      
+      <a href="/categories/#Microservices" class="post-tag">Microservices</a>
       
       
     </div>
@@ -83,7 +86,7 @@
   <li>Prebuild programming model to develop application with Stateful, Stateless, Containerized                       microservices.</li>
   <li>Service Fabric cluster can run on any platform (WINDOWS/Linux) regardless of Azure/On-Premise/Other             Clouds.</li>
   <li>Service Fabric can deploy .NET, ASP.NET Core, node.js, Windows containers, Linux containers, Java virtual       machines, scripts, Angular, or literally anything that makes up your application.</li>
-  <li>It provides development machine cluster manager locally so what you see running locally will run same way       on cloud.</li> 
+  <li>It provides development machine cluster manager locally so what you see running locally will run same way       on cloud.</li>
   <li>Deploy different versions of the same application side by side, and upgrade each application                    independently.</li>
   <li>You can manage the lifecycle of your applications without any downtime, including breaking and nonbreaking      upgrades.</li>
   <li>High density hosting - Applications are separate from VMs and service fabric manages application. It is         possible to deploy a large number of application to a small number of VMs.</li>
@@ -183,7 +186,7 @@
 
 <p>In this project, signalr javascript client is used to connect with signalr host and as soon as message is received, we are appending those messages in web page. Following is the code snippet where we are connecting with the host and reading the received messages.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span></span><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">hubConnection</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span> <span class="o">+</span> <span class="nx">signalRHost</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">abilityNotificationHubProxy</span> <span class="o">=</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">createHubProxy</span><span class="p">(</span><span class="s1">&#39;abilityNotificationHub&#39;</span><span class="p">);</span>
     <span class="nx">abilityNotificationHubProxy</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;showNotificationInPage&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
