@@ -139,19 +139,24 @@
         <span class="n">app</span><span class="p">.</span><span class="n">MapSignalR</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="kt">var</span> <span class="n">configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HubConfiguration</span> <span class="p">{</span> <span class="n">EnableDetailedErrors</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span> <span class="n">EnableJavaScriptProxies</span> <span class="p">=</span> <span class="k">false</span> <span class="p">};</span>
+    <span class="kt">var</span> <span class="n">configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HubConfiguration</span>
+     <span class="p">{</span> <span class="n">EnableDetailedErrors</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span> <span class="n">EnableJavaScriptProxies</span> <span class="p">=</span> <span class="k">false</span> <span class="p">};</span>
     <span class="n">app</span><span class="p">.</span><span class="n">MapSignalR</span><span class="p">(</span><span class="n">configuration</span><span class="p">);</span>
 
     <span class="kt">var</span> <span class="n">connectionString</span> <span class="p">=</span> <span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">ServiceBusConnectionString</span><span class="p">;</span>
     <span class="kt">var</span> <span class="n">topicName</span> <span class="p">=</span> <span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">ServiceBusNotificationTopic</span><span class="p">;</span>
     <span class="kt">var</span> <span class="n">topicSubscriptionName</span> <span class="p">=</span> <span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">TopicSubscriptionName</span><span class="p">;</span>
 
-    <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="n">SubscriptionClient</span><span class="p">.</span><span class="n">CreateFromConnectionString</span><span class="p">(</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">topicName</span><span class="p">,</span> <span class="n">topicSubscriptionName</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> 
+    <span class="n">SubscriptionClient</span><span class="p">.</span><span class="n">CreateFromConnectionString</span><span class="p">(</span><span class="n">connectionString</span><span class="p">,</span> 
+    <span class="n">topicName</span><span class="p">,</span> <span class="n">topicSubscriptionName</span><span class="p">);</span>
 
     <span class="n">client</span><span class="p">.</span><span class="n">OnMessage</span><span class="p">(</span><span class="n">message</span> <span class="p">=&gt;</span>
     <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">notificationHubContext</span> <span class="p">=</span> <span class="n">GlobalHost</span><span class="p">.</span><span class="n">ConnectionManager</span><span class="p">.</span><span class="n">GetHubContext</span><span class="p">&lt;</span><span class="n">AbilityNotificationHub</span><span class="p">&gt;();</span>
-        <span class="n">notificationHubContext</span><span class="p">.</span><span class="n">Clients</span><span class="p">.</span><span class="n">All</span><span class="p">.</span><span class="n">showNotificationInPage</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">GetBody</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;());</span>
+        <span class="kt">var</span> <span class="n">notificationHubContext</span> <span class="p">=</span> 
+        <span class="n">GlobalHost</span><span class="p">.</span><span class="n">ConnectionManager</span><span class="p">.</span><span class="n">GetHubContext</span><span class="p">&lt;</span><span class="n">AbilityNotificationHub</span><span class="p">&gt;();</span>
+        <span class="n">notificationHubContext</span><span class="p">.</span><span class="n">Clients</span><span class="p">.</span><span class="n">All</span>
+        <span class="p">.</span><span class="n">showNotificationInPage</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">GetBody</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;());</span>
     <span class="p">});</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -174,8 +179,8 @@
         <span class="kt">var</span> <span class="n">topicName</span> <span class="p">=</span> <span class="n">DispatcherConfiguration</span><span class="p">.</span><span class="n">ServiceBusNotificationTopic</span><span class="p">;</span>
 
         <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="n">TopicClient</span><span class="p">.</span><span class="n">CreateFromConnectionString</span><span class="p">(</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">topicName</span><span class="p">);</span>
-        <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BrokeredMessage</span><span class="p">(</span><span class="s">&quot;This is a test message generated on &quot;</span> <span class="p">+</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToUniversalTime</span><span class="p">().</span><span class="n">ToString</span><span class="p">(</span><span class="s">&quot;MM/dd/yyyy HH:mm:ss.fff&quot;</span><span class="p">,</span>
-                        <span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">));</span>
+        <span class="kt">var</span> <span class="n">dtTime</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&quot;MM/dd/yyyy HH:mm:ss.fff&quot;</span><span class="p">,</span> <span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BrokeredMessage</span><span class="p">(</span><span class="s">&quot;This is a test message generated on &quot;</span> <span class="p">+</span> <span class="n">dtTime</span><span class="p">);</span>
         <span class="n">client</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
 
         <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">15</span><span class="p">),</span> <span class="n">cancellationToken</span><span class="p">);</span>
