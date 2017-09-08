@@ -5,8 +5,8 @@
     <description>It is all about software architecture</description>
     <link>http://nileshprajapati.net/</link>
     <atom:link href="http://nileshprajapati.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Sep 2017 18:36:29 +0530</pubDate>
-    <lastBuildDate>Thu, 07 Sep 2017 18:36:29 +0530</lastBuildDate>
+    <pubDate>Fri, 08 Sep 2017 15:00:02 +0530</pubDate>
+    <lastBuildDate>Fri, 08 Sep 2017 15:00:02 +0530</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
@@ -78,12 +78,12 @@
 
 &lt;p&gt;In the sample solution, you will find ServiceFabricHost project and following content explains the detail about hosting container on service fabric. My &lt;a href=&quot;/blog/2017/signalr-based-app-on-service-fabric/&quot;&gt;previous article&lt;/a&gt; explains about installing Service Fabric SDK, which is prerequisite to host this application on Azure Service Fabric.&lt;/p&gt;
 
-&lt;p&gt;Following portion of ServiceManifest.xml file should have an Azure Container Registry path of your container registry, about which is explained in &lt;a href=&quot;/blog/2017/signalr-based-app-on-service-fabric/&quot;&gt;previous article&lt;/a&gt;. For your image URL, you will have to use full path including your container registry URL (e.g. abilitycontainerregistry.azurecr.io/pocs/webapiservice).&lt;/p&gt;
+&lt;p&gt;Following portion of ServiceManifest.xml file should have an Azure Container Registry path of your container registry, about which is explained in &lt;a href=&quot;/blog/2017/signalr-based-app-on-service-fabric/&quot;&gt;previous article&lt;/a&gt;. For your image URL, you will have to use full path including your container registry URL.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;EntryPoint&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers --&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;ContainerHost&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageName&amp;gt;&lt;/span&gt;[Your container image URL]&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ImageName&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageName&amp;gt;&lt;/span&gt;[Your container image URL]&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ImageName&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ContainerHost&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/EntryPoint&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -91,10 +91,10 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Resources&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;Endpoints&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- This endpoint is used by the communication listener to obtain the port on which to &lt;/span&gt;
+       &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- This endpoint is used by the communication listener to obtain the port on which to &lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;            listen. Please note that if your service is partitioned, this port is shared with &lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;            replicas of different partitions that are placed in your code. --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Endpoint&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;WebAPIHostServiceTypeEndpoint&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Protocol=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Port=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;9000&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+       &lt;span class=&quot;nt&quot;&gt;&amp;lt;Endpoint&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;WebAPIHostServiceTypeEndpoint&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Protocol=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Port=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;9000&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Endpoints&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Resources&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -105,8 +105,8 @@
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;ConfigOverrides&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;Policies&amp;gt;&lt;/span&gt;
         &lt;span class=&quot;nt&quot;&gt;&amp;lt;ContainerHostPolicies&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;CodePackageRef=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Code&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RepositoryCredentials&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;AccountName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;[Your Container Registry Account Name]&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Password=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;[Container Registry Account Password]&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Email=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;[You email address associated with Azure account]&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;PasswordEncrypted=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;PortBinding&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ContainerPort=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;9000&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;EndpointRef=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;WebAPIHostServiceTypeEndpoint&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;RepositoryCredentials&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;AccountName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;[Your Container Registry Account Name]&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Password=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;[Container Registry Account Password]&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Email=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;[You email address associated with Azure account]&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;PasswordEncrypted=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;PortBinding&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ContainerPort=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;9000&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;EndpointRef=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;WebAPIHostServiceTypeEndpoint&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
         &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ContainerHostPolicies&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Policies&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ServiceManifestImport&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
