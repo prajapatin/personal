@@ -3,10 +3,10 @@
   <channel>
     <title>Nilesh Prajapati</title>
     <description>It is all about software architecture</description>
-    <link>http://nileshprajapati.net/</link>
-    <atom:link href="http://nileshprajapati.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Sep 2017 21:54:12 +0530</pubDate>
-    <lastBuildDate>Wed, 13 Sep 2017 21:54:12 +0530</lastBuildDate>
+    <link>https://nileshprajapati.net/</link>
+    <atom:link href="https://nileshprajapati.net/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 13 Sep 2017 22:02:54 +0530</pubDate>
+    <lastBuildDate>Wed, 13 Sep 2017 22:02:54 +0530</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
@@ -44,8 +44,8 @@
 
 </description>
         <pubDate>Thu, 14 Sep 2017 02:30:00 +0530</pubDate>
-        <link>http://nileshprajapati.net/blog/2017/lambda-architecture-vs-kappa-architecture-in-IOT/</link>
-        <guid isPermaLink="true">http://nileshprajapati.net/blog/2017/lambda-architecture-vs-kappa-architecture-in-IOT/</guid>
+        <link>https://nileshprajapati.net/blog/2017/lambda-architecture-vs-kappa-architecture-in-IOT/</link>
+        <guid isPermaLink="true">https://nileshprajapati.net/blog/2017/lambda-architecture-vs-kappa-architecture-in-IOT/</guid>
         
         
         <category>Architecture</category>
@@ -162,8 +162,8 @@
 
 </description>
         <pubDate>Wed, 06 Sep 2017 02:30:00 +0530</pubDate>
-        <link>http://nileshprajapati.net/blog/2017/windows-service-as-a-container-on-service-fabric/</link>
-        <guid isPermaLink="true">http://nileshprajapati.net/blog/2017/windows-service-as-a-container-on-service-fabric/</guid>
+        <link>https://nileshprajapati.net/blog/2017/windows-service-as-a-container-on-service-fabric/</link>
+        <guid isPermaLink="true">https://nileshprajapati.net/blog/2017/windows-service-as-a-container-on-service-fabric/</guid>
         
         
         <category>Cloud</category>
@@ -308,8 +308,8 @@
 
 </description>
         <pubDate>Fri, 01 Sep 2017 00:30:00 +0530</pubDate>
-        <link>http://nileshprajapati.net/blog/2017/signalr-based-app-on-service-fabric/</link>
-        <guid isPermaLink="true">http://nileshprajapati.net/blog/2017/signalr-based-app-on-service-fabric/</guid>
+        <link>https://nileshprajapati.net/blog/2017/signalr-based-app-on-service-fabric/</link>
+        <guid isPermaLink="true">https://nileshprajapati.net/blog/2017/signalr-based-app-on-service-fabric/</guid>
         
         
         <category>Cloud</category>
@@ -332,8 +332,8 @@
 
 </description>
         <pubDate>Tue, 29 Aug 2017 03:45:00 +0530</pubDate>
-        <link>http://nileshprajapati.net/blog/2017/what-is-micro-services-architecture/</link>
-        <guid isPermaLink="true">http://nileshprajapati.net/blog/2017/what-is-micro-services-architecture/</guid>
+        <link>https://nileshprajapati.net/blog/2017/what-is-micro-services-architecture/</link>
+        <guid isPermaLink="true">https://nileshprajapati.net/blog/2017/what-is-micro-services-architecture/</guid>
         
         <category>Microservices</category>
         
@@ -362,8 +362,8 @@
 
 </description>
         <pubDate>Mon, 28 Aug 2017 00:43:00 +0530</pubDate>
-        <link>http://nileshprajapati.net/blog/2017/welcome-to-nileshprajapati.net/</link>
-        <guid isPermaLink="true">http://nileshprajapati.net/blog/2017/welcome-to-nileshprajapati.net/</guid>
+        <link>https://nileshprajapati.net/blog/2017/welcome-to-nileshprajapati.net/</link>
+        <guid isPermaLink="true">https://nileshprajapati.net/blog/2017/welcome-to-nileshprajapati.net/</guid>
         
         <category>welcome</category>
         
