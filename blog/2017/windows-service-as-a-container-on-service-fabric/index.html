@@ -145,7 +145,7 @@
 
 <p>In the sample solution, you will find ServiceFabricHost project and following content explains the detail about hosting container on service fabric. My <a href="/blog/2017/signalr-based-app-on-service-fabric/">previous article</a> explains about installing Service Fabric SDK, which is prerequisite to host this application on Azure Service Fabric.</p>
 
-<p>Following portion of ServiceManifest.xml file should have an Azure Container Registry path of your container registry, about which is explained in <a href="/blog/2017/signalr-based-app-on-service-fabric/">previous article</a>. For your image URL, you will have to use full path including your container registry URL.</p>
+<p>Following portion of ServiceManifest.xml file should have an Azure Container Registry path of your container registry and how to store/manage container images in Azure Container Registry is explained <a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli">here</a>. For your image URL, you will have to use full path including your container registry URL.</p>
 
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span><span class="nt">&lt;EntryPoint&gt;</span>
     <span class="c">&lt;!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers --&gt;</span>

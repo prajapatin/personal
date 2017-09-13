@@ -5,15 +5,15 @@
     <description>It is all about software architecture</description>
     <link>http://nileshprajapati.net/</link>
     <atom:link href="http://nileshprajapati.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Sep 2017 15:00:02 +0530</pubDate>
-    <lastBuildDate>Fri, 08 Sep 2017 15:00:02 +0530</lastBuildDate>
+    <pubDate>Wed, 13 Sep 2017 09:07:19 +0530</pubDate>
+    <lastBuildDate>Wed, 13 Sep 2017 09:07:19 +0530</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
         <title>Windows Service as a Container on Azure Service Fabric</title>
         <description>&lt;h3&gt;What is Docker and Container?&lt;/h3&gt;
 
-&lt;p&gt;The &lt;a href=&quot;https://www.docker.com/what-docker&quot;&gt;Docker&lt;/a&gt; is a container platform using which you can create software containers. The container is a packaged software which shares the host operation system and contains all dependencies (System files, third-party software, settings or anything which is needed to run your containerized app) needed to run your software application.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://www.docker.com/what-docker&quot;&gt;Docker&lt;/a&gt; is a container platform using which you can create software containers. The container is a packaged software which shares the host operating system and contains all dependencies (System files, third-party software, settings or anything which is needed to run your containerized app) needed to run your software application.&lt;/p&gt;
 
 &lt;p&gt;Containers are used to ship software faster and developers need not to be worried about whether the containerized app will run on specific machine or not. They are very light weight and share host operating system where you are running them and you can run multiple sandboxed containerized apps on specific VM or physical machine. There are many software product companies around the world which are using containers to release software on daily basis and saying multiple times in a day is also not wrong.&lt;/p&gt;
 
@@ -50,7 +50,7 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;webapiservice&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;9000&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;9000&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;webapiservice&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;The above command runs Docker container with name as a ‘webapiservice’ and maps container port 9000 with host port 9000. Once you run the command, The Docker runtime will start the container and it will use PowerShell script provided in template as a CMD. Let us try to understand that init.ps1 file, here we are starting wendows service as sson as container starts. We are also making sure that we are making http call to our REST service and flushing out logs if any so that we can verify those logs running ‘Docker logs {nameofcontainer}’ PowerShell command.&lt;/p&gt;
+&lt;p&gt;The above command runs Docker container with name as a ‘webapiservice’ and maps container port 9000 with host port 9000. Once you run the command, The Docker runtime will start the container and it will use PowerShell script provided in template as a CMD. Let us try to understand that init.ps1 file, here we are starting windows service as soon as container starts. We are also making sure that we are making http call to our REST service and flushing out logs if any so that we can verify those logs running ‘Docker logs {nameofcontainer}’ PowerShell command.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Write-Output&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Starting Web API Host Server&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;Start-Service&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebAPIHostService&lt;/span&gt;
@@ -78,7 +78,7 @@
 
 &lt;p&gt;In the sample solution, you will find ServiceFabricHost project and following content explains the detail about hosting container on service fabric. My &lt;a href=&quot;/blog/2017/signalr-based-app-on-service-fabric/&quot;&gt;previous article&lt;/a&gt; explains about installing Service Fabric SDK, which is prerequisite to host this application on Azure Service Fabric.&lt;/p&gt;
 
-&lt;p&gt;Following portion of ServiceManifest.xml file should have an Azure Container Registry path of your container registry, about which is explained in &lt;a href=&quot;/blog/2017/signalr-based-app-on-service-fabric/&quot;&gt;previous article&lt;/a&gt;. For your image URL, you will have to use full path including your container registry URL.&lt;/p&gt;
+&lt;p&gt;Following portion of ServiceManifest.xml file should have an Azure Container Registry path of your container registry and how to store/manage container images in Azure Container Registry is explained &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli&quot;&gt;here&lt;/a&gt;. For your image URL, you will have to use full path including your container registry URL.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;EntryPoint&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers --&amp;gt;&lt;/span&gt;
