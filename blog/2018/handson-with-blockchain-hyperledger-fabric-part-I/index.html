@@ -151,10 +151,10 @@ verify the version with command: python –version</li>
   <li>Install Nodejs 8.9.x (As of now you must need 8.9.x version)</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>  sudo apt-get install curl
-  curl -sL https://deb.nodesource.com/setup_8.x <span class="p">|</span> sudo -E bash -
-  sudo apt-get install -y nodejs
-  sudo npm install npm --global
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nb">sudo </span>apt-get install curl
+  curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_8.x | <span class="nb">sudo</span> <span class="nt">-E</span> bash -
+  <span class="nb">sudo </span>apt-get install <span class="nt">-y</span> nodejs
+  <span class="nb">sudo </span>npm install npm <span class="nt">--global</span>
   </code></pre></figure>
 
 <p>You may need to set default node version if you have multiple versions of nodejs installed
@@ -165,25 +165,25 @@ verify the version with command: python –version</li>
   <li>Download all fabric images &amp; fabric sample</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>curl -sSL http://bit.ly/2ysbOFE <span class="p">|</span> bash -s <span class="m">1</span>.2.0 </code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">curl <span class="nt">-sSL</span> http://bit.ly/2ysbOFE | bash <span class="nt">-s</span> 1.2.0 </code></pre></figure>
 
 <h3>Running your first Hyperledger Fabric network</h3>
 
 <p>We will start our first network from sample but before you run your first sample, Install everything you need to run first network including fabric images.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>sudo bash fabric-samples/scripts/bootstrap.sh</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">sudo </span>bash fabric-samples/scripts/bootstrap.sh</code></pre></figure>
 
 <p>Run first-network by navigating to first-network folder in fabric-samples directory</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>./byfn generate</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">./byfn generate</code></pre></figure>
 
 <p>(generates certificate, genesis block and other artifacts. The artifacts can be found in first-network/channel-artifacts folder)</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>./byfn up</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">./byfn up</code></pre></figure>
 
 <p>(start your first network)</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>./byfn down</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">./byfn down</code></pre></figure>
 
 <p>(shutdown your first network)</p>
 

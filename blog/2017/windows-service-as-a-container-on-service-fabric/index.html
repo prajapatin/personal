@@ -96,48 +96,48 @@
 
 <p>First we will try to understand dockerfile template.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">FROM</span> <span class="n">microsoft</span><span class="p">/</span><span class="n">dotnet-framework</span><span class="err">:</span><span class="n">4</span><span class="p">.</span><span class="n">7</span>
-<span class="n">RUN</span> <span class="n">mkdir</span> <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">installation</span>
-<span class="n">ADD</span> <span class="p">.</span> <span class="p">/</span><span class="n">installation</span>
-<span class="n">RUN</span> <span class="n">sc</span> <span class="n">create</span> <span class="n">WebAPIHostService</span> <span class="n">start</span><span class="p">=</span><span class="n">auto</span> <span class="n">binpath</span><span class="p">=</span><span class="s2">&quot;C:\installation\HostService.exe&quot;</span>
-<span class="n">CMD</span> <span class="n">powershell</span> <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">installation</span><span class="p">\</span><span class="n">init</span><span class="p">.</span><span class="n">ps1</span>
-<span class="n">EXPOSE</span> <span class="n">9000</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="k">FROM </span>microsoft/dotnet-framework:4.7
+RUN mkdir C:\installation
+ADD <span class="nb">.</span> /installation
+RUN <span class="nb">sc </span>create WebAPIHostService <span class="nb">start</span><span class="o">=</span>auto <span class="nv">binpath</span><span class="o">=</span><span class="s2">"C:\installation\HostService.exe"</span>
+CMD powershell C:\installation\init.ps1
+EXPOSE 9000</code></pre></figure>
 
 <p>To run the Docker build command, you will need to open PowerShell command prompt in administartor mode and then set your directory to bin/debug(or release) folder of the windows service project you have built as per above instructions. The above Docker template says that create the Docker image by taking microsoft/dotnet-framework:4.7 as a base image and create the installation folder in c directory in Docker image. The third line says that add whatever current directory content to created folder. In the fourth line we are instructing Docker runtime to create windows service from provided exe. The line prefixed with CMD instructs Docker runtime to run specified powershell script when we would be running Docker container from Docker image. The last line exposes port 9000, on which we can access REST api hosted in windows service.</p>
 
 <p>Now you have understood dockerfile, we will run following command in PowerShell, which will create Docker image.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">docker</span> <span class="n">build</span> <span class="n">-t</span> <span class="n">webapiservice</span> <span class="p">.</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">docker build -t webapiservice .</code></pre></figure>
 
 <p>The command will take quite a bit of time as it will download base windows image with .Net Framework from the Docker hub, it will download the image only first time and thereafter if you build any Docker image from the mentioned base image; it will use local image from your machine. Once the image creation is successful, you can verify that your image is created using below PowerShell command.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">docker</span> <span class="n">images</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">docker images</code></pre></figure>
 
 <p>We now have a Docker image and we want to run container using that image so we need to run following command.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">docker</span> <span class="n">run</span> <span class="p">-</span><span class="n">-name</span> <span class="n">webapiservice</span> <span class="n">-d</span> <span class="n">-p</span> <span class="n">9000</span><span class="err">:</span><span class="n">9000</span> <span class="n">webapiservice</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">docker run --name webapiservice -d -p 9000:9000 webapiservice</code></pre></figure>
 
 <p>The above command runs Docker container with name as a ‘webapiservice’ and maps container port 9000 with host port 9000. Once you run the command, The Docker runtime will start the container and it will use PowerShell script provided in template as a CMD. Let us try to understand that init.ps1 file, here we are starting windows service as soon as container starts. We are also making sure that we are making http call to our REST service and flushing out logs if any so that we can verify those logs running ‘Docker logs {nameofcontainer}’ PowerShell command.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="nb">Write-Output</span> <span class="s1">&#39;Starting Web API Host Server&#39;</span>
-<span class="nb">Start-Service</span> <span class="n">WebAPIHostService</span>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nb">Write-Output</span> <span class="s1">'Starting Web API Host Server'</span>
+<span class="nb">Start-Service </span>WebAPIHostService
     
-<span class="nb">Write-Output</span> <span class="s1">&#39;Making HTTP GET call&#39;</span>
-<span class="nb">Invoke-WebRequest</span> <span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">localhost</span><span class="err">:</span><span class="n">9000</span><span class="p">/</span><span class="n">api</span><span class="p">/</span><span class="n">welcome</span> <span class="n">-UseBasicParsing</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+<span class="nb">Write-Output</span> <span class="s1">'Making HTTP GET call'</span>
+<span class="nb">Invoke-WebRequest </span>http://localhost:9000/api/welcome -UseBasicParsing | Out-Null
 
-<span class="nb">Write-Output</span> <span class="s1">&#39;Flushing log file&#39;</span>
-<span class="n">netsh</span> <span class="n">http</span> <span class="n">flush</span> <span class="n">logbuffer</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+<span class="nb">Write-Output</span> <span class="s1">'Flushing log file'</span>
+netsh http flush logbuffer | Out-Null
 
-<span class="nb">Write-Output</span> <span class="s1">&#39;Tailing log file&#39;</span>
-<span class="nb">Get-Content</span> <span class="n">-path</span> <span class="s1">&#39;C:\installation\service.log&#39;</span> <span class="n">-Tail</span> <span class="n">1</span> <span class="n">-Wait</span></code></pre></figure>
+<span class="nb">Write-Output</span> <span class="s1">'Tailing log file'</span>
+<span class="nb">Get-Content</span> -path <span class="s1">'C:\installation\service.log'</span> -Tail 1 -Wait</code></pre></figure>
 
 <p>Once command runs successfully, we can verify that your container is running by below command.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">docker</span> <span class="n">ps</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">docker <span class="nb">ps</span></code></pre></figure>
 
 <p>If you want to verify that your windows service is running successfully, you will need to get IP address of container using below command.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">docker</span> <span class="n">inspect</span> <span class="p">-</span><span class="n">-format</span><span class="p">=</span><span class="s2">&quot;{ {.NetworkSettings.Networks.nat.IPAddress} }&quot;</span> <span class="n">webapiservice</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">docker inspect --format<span class="o">=</span><span class="s2">"{ {.NetworkSettings.Networks.nat.IPAddress} }"</span> webapiservice</code></pre></figure>
 
 <p>Once you get an IP address of running container, you can browse through {IP Address}:9000/api/welcome and verify that your API is up and running. You can also try to browse through another method {IP Address}:9000/api/welcome/detail. We now have windows service running in container so we can quickly look at how we can run container on Azure Service Fabric.</p>
 
@@ -147,7 +147,7 @@
 
 <p>Following portion of ServiceManifest.xml file should have an Azure Container Registry path of your container registry and how to store/manage container images in Azure Container Registry is explained <a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli">here</a>. For your image URL, you will have to use full path including your container registry URL.</p>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span><span class="nt">&lt;EntryPoint&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;EntryPoint&gt;</span>
     <span class="c">&lt;!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers --&gt;</span>
     <span class="nt">&lt;ContainerHost&gt;</span>
         <span class="nt">&lt;ImageName&gt;</span>[Your container image URL]<span class="nt">&lt;/ImageName&gt;</span>
@@ -156,24 +156,24 @@
 
 <p>Also you will need to understand following portion from the same file, where we are creating endpoint for our microservice.</p>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span><span class="nt">&lt;Resources&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Resources&gt;</span>
     <span class="nt">&lt;Endpoints&gt;</span>
-       <span class="c">&lt;!-- This endpoint is used by the communication listener to obtain the port on which to </span>
-<span class="c">            listen. Please note that if your service is partitioned, this port is shared with </span>
-<span class="c">            replicas of different partitions that are placed in your code. --&gt;</span>
-       <span class="nt">&lt;Endpoint</span> <span class="na">Name=</span><span class="s">&quot;WebAPIHostServiceTypeEndpoint&quot;</span> <span class="na">Protocol=</span><span class="s">&quot;http&quot;</span> <span class="na">Port=</span><span class="s">&quot;9000&quot;</span> <span class="nt">/&gt;</span>
+       <span class="c">&lt;!-- This endpoint is used by the communication listener to obtain the port on which to 
+            listen. Please note that if your service is partitioned, this port is shared with 
+            replicas of different partitions that are placed in your code. --&gt;</span>
+       <span class="nt">&lt;Endpoint</span> <span class="na">Name=</span><span class="s">"WebAPIHostServiceTypeEndpoint"</span> <span class="na">Protocol=</span><span class="s">"http"</span> <span class="na">Port=</span><span class="s">"9000"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/Endpoints&gt;</span>
 <span class="nt">&lt;/Resources&gt;</span></code></pre></figure>
 
 <p>The another file ApplicationMenifest.xml is also very important to understand as it explains port mapping between Container and host and credential to connect with Azure Container Registry so that Service Fabric can download the docker image. We need to know another very important detail about endpoint reference in port mapping, it is a same endpoint name we have provided in ServiceManifest.xml.</p>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span><span class="nt">&lt;ServiceManifestImport&gt;</span>
-    <span class="nt">&lt;ServiceManifestRef</span> <span class="na">ServiceManifestName=</span><span class="s">&quot;WebAPIHostServicePkg&quot;</span> <span class="na">ServiceManifestVersion=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;ServiceManifestImport&gt;</span>
+    <span class="nt">&lt;ServiceManifestRef</span> <span class="na">ServiceManifestName=</span><span class="s">"WebAPIHostServicePkg"</span> <span class="na">ServiceManifestVersion=</span><span class="s">"1.0.0"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;ConfigOverrides</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;Policies&gt;</span>
-        <span class="nt">&lt;ContainerHostPolicies</span> <span class="na">CodePackageRef=</span><span class="s">&quot;Code&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;RepositoryCredentials</span> <span class="na">AccountName=</span><span class="s">&quot;[Your Container Registry Account Name]&quot;</span> <span class="na">Password=</span><span class="s">&quot;[Container Registry Account Password]&quot;</span> <span class="na">Email=</span><span class="s">&quot;[You email address associated with Azure account]&quot;</span> <span class="na">PasswordEncrypted=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;PortBinding</span> <span class="na">ContainerPort=</span><span class="s">&quot;9000&quot;</span> <span class="na">EndpointRef=</span><span class="s">&quot;WebAPIHostServiceTypeEndpoint&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;ContainerHostPolicies</span> <span class="na">CodePackageRef=</span><span class="s">"Code"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;RepositoryCredentials</span> <span class="na">AccountName=</span><span class="s">"[Your Container Registry Account Name]"</span> <span class="na">Password=</span><span class="s">"[Container Registry Account Password]"</span> <span class="na">Email=</span><span class="s">"[You email address associated with Azure account]"</span> <span class="na">PasswordEncrypted=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;PortBinding</span> <span class="na">ContainerPort=</span><span class="s">"9000"</span> <span class="na">EndpointRef=</span><span class="s">"WebAPIHostServiceTypeEndpoint"</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;/ContainerHostPolicies&gt;</span>
     <span class="nt">&lt;/Policies&gt;</span>
 <span class="nt">&lt;/ServiceManifestImport&gt;</span></code></pre></figure>

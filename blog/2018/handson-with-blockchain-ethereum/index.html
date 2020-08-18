@@ -97,10 +97,10 @@
 
 <p>You can use below commands to install Geth on ubuntu and for Windows, there is an exe on download page mentioned above; which installs required dependency and prepare command line tool to work with Geth.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">sudo</span> <span class="n">apt-get</span> <span class="n">install</span> <span class="n">software-properties-common</span>
-<span class="n">sudo</span> <span class="nb">add-apt</span><span class="n">-repository</span> <span class="n">-y</span> <span class="n">ppa</span><span class="err">:</span><span class="n">ethereum</span><span class="p">/</span><span class="n">ethereum</span>
-<span class="n">sudo</span> <span class="n">apt-get</span> <span class="n">update</span>
-<span class="n">sudo</span> <span class="n">apt-get</span> <span class="n">install</span> <span class="n">ethereum</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nb">sudo </span>apt-get install software-properties-common
+<span class="nb">sudo </span>add-apt-repository -y ppa:ethereum/ethereum
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get install ethereum</code></pre></figure>
 
 <h4>Installing Mist on Ubuntu</h4>
 
@@ -110,35 +110,35 @@
 
 <p>Before we start running different commands, you need to create one data directory where you want your private blockchain network to store data. As we are going to create first blockchain node, we need to start it as a genesis block and for that we need to prepare genesis.json file as mentioned below.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="p">{</span>
-    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;chainId&quot;</span><span class="o">:</span> <span class="mi">2000</span><span class="p">,</span>
-        <span class="s2">&quot;homesteadBlock&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;eip155Block&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;eip158Block&quot;</span><span class="o">:</span> <span class="mi">0</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+    <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"chainId"</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+        <span class="s2">"homesteadBlock"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">"eip155Block"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">"eip158Block"</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">},</span>
-    <span class="s2">&quot;coinbase&quot;</span><span class="o">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;difficulty&quot;</span><span class="o">:</span> <span class="s2">&quot;400&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;extraData&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gasLimit&quot;</span><span class="o">:</span> <span class="s2">&quot;0x8000000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;nonce&quot;</span><span class="o">:</span> <span class="s2">&quot;0x0000000000000042&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;mixhash&quot;</span><span class="o">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;parentHash&quot;</span><span class="o">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;timestamp&quot;</span><span class="o">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;alloc&quot;</span><span class="o">:</span> <span class="p">{</span>
-    	<span class="s2">&quot;0x89fd6f157c3fb1a40566ca170986cdc49025f9df&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;balance&quot;</span><span class="o">:</span> <span class="s2">&quot;0x1337000000000000000000&quot;</span><span class="p">},</span>
-      <span class="s2">&quot;0xc6a729e1e3d869e2fcf9199f00764ef00fad023c&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;balance&quot;</span><span class="o">:</span> <span class="s2">&quot;0x2337000000000000000000&quot;</span><span class="p">}</span>
+    <span class="s2">"coinbase"</span><span class="p">:</span> <span class="s2">"0x0000000000000000000000000000000000000001"</span><span class="p">,</span>
+    <span class="s2">"difficulty"</span><span class="p">:</span> <span class="s2">"400"</span><span class="p">,</span>
+    <span class="s2">"extraData"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="s2">"gasLimit"</span><span class="p">:</span> <span class="s2">"0x8000000"</span><span class="p">,</span>
+    <span class="s2">"nonce"</span><span class="p">:</span> <span class="s2">"0x0000000000000042"</span><span class="p">,</span>
+    <span class="s2">"mixhash"</span><span class="p">:</span> <span class="s2">"0x0000000000000000000000000000000000000000000000000000000000000000"</span><span class="p">,</span>
+    <span class="s2">"parentHash"</span><span class="p">:</span> <span class="s2">"0x0000000000000000000000000000000000000000000000000000000000000000"</span><span class="p">,</span>
+    <span class="s2">"timestamp"</span><span class="p">:</span> <span class="s2">"0x0"</span><span class="p">,</span>
+    <span class="s2">"alloc"</span><span class="p">:</span> <span class="p">{</span>
+    	<span class="s2">"0x89fd6f157c3fb1a40566ca170986cdc49025f9df"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"balance"</span><span class="p">:</span> <span class="s2">"0x1337000000000000000000"</span><span class="p">},</span>
+      <span class="s2">"0xc6a729e1e3d869e2fcf9199f00764ef00fad023c"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"balance"</span><span class="p">:</span> <span class="s2">"0x2337000000000000000000"</span><span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>The content of your genesis file should be something similar to above and file should be stored in data directory you created previously. I am going to explain only few properties of genesis file here and for rest you can look online. The ‘chainId’ is the id you want to give to your block/network, it can be anything above 3 as 1 to 3 are reserved by blockchain for different purpose. The ‘difficulty’ indicates the effort required to discover valid block, statistically more calculations a Miner must perform to discover a valid block. We should keep ‘difficulty’ level as low as possible in test network so that our transactions get completed faster. The ‘alloc’ is the place where we will put default accounts with ether balance when we start our private network. You need to change both account ids as per generated by your geth, below is the command to create new account before starting the node.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">geth</span> <span class="p">-</span><span class="n">-datadir</span> <span class="p">/</span><span class="n">path</span><span class="p">/</span><span class="n">to</span><span class="p">/</span><span class="n">your</span><span class="p">/</span><span class="n">data</span><span class="p">/</span><span class="n">folder</span> <span class="n">account</span> <span class="n">new</span>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">geth --datadir /path/to/your/data/folder account new
 
-<span class="n">Your</span> <span class="n">new</span> <span class="n">account</span> <span class="n">is</span> <span class="n">locked</span> <span class="n">with</span> <span class="n">a</span> <span class="n">password</span><span class="p">.</span> <span class="n">Please</span> <span class="n">give</span> <span class="n">a</span> <span class="n">password</span><span class="p">.</span> <span class="k">Do</span> <span class="n">not</span> <span class="n">forget</span> <span class="n">this</span> <span class="n">password</span><span class="p">.</span>
-<span class="n">Passphrase</span><span class="err">:</span> 
-<span class="n">Repeat</span> <span class="n">passphrase</span><span class="err">:</span> 
-<span class="n">Address</span><span class="err">:</span> <span class="p">{</span><span class="n">9bc0fae0baeb01fe0e441a980acdf61b85e3db9e</span><span class="p">}</span></code></pre></figure>
+Your new account is locked with a password. Please give a password. <span class="k">Do </span>not forget this password.
+Passphrase: 
+Repeat passphrase: 
+Address: <span class="o">{</span>9bc0fae0baeb01fe0e441a980acdf61b85e3db9e<span class="o">}</span></code></pre></figure>
 
 <p>You need to provide password to account and note the address(id)/password for the account, go ahead and repeat this one more time to generate another account. Once you have two accounts, you can replace two ids in genesis file with these two accounts you generated.</p>
 
@@ -146,13 +146,13 @@
 
 <p>We have now genesis file under data folder and we need to tell Geth about it so next command is to initialize genesis node with genesis file.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">geth</span> <span class="p">-</span><span class="n">-datadir</span> <span class="p">/</span><span class="n">path</span><span class="p">/</span><span class="n">to</span><span class="p">/</span><span class="n">your</span><span class="p">/</span><span class="n">data</span><span class="p">/</span><span class="n">folder</span> <span class="n">init</span> <span class="p">/</span><span class="n">path</span><span class="p">/</span><span class="n">to</span><span class="p">/</span><span class="n">your</span><span class="p">/</span><span class="n">data</span><span class="p">/</span><span class="n">folder</span><span class="p">/</span><span class="n">genesis</span><span class="p">.</span><span class="n">json</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">geth --datadir /path/to/your/data/folder init /path/to/your/data/folder/genesis.json</code></pre></figure>
 
 <p>The above command is the one time initialization of your genesis node, from where your blockchain can be started.</p>
 
 <h4>Running private Node/Network</h4>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">geth</span> <span class="p">-</span><span class="n">-datadir</span> <span class="p">/</span><span class="n">path</span><span class="p">/</span><span class="n">to</span><span class="p">/</span><span class="n">your</span><span class="p">/</span><span class="n">data</span><span class="p">/</span><span class="n">folder</span> <span class="p">-</span><span class="n">-ipcpath</span> <span class="p">~/.</span><span class="n">ethereum</span><span class="p">/</span><span class="n">geth</span><span class="p">.</span><span class="n">ipc</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">geth --datadir /path/to/your/data/folder --ipcpath ~/.ethereum/geth.ipc</code></pre></figure>
 
 <p>In above command, you are noticing ipcpath option, which tells geth to put IPC file to specific location. The geth will start with above command and you are running your private blockchain network locally.</p>
 
@@ -164,12 +164,12 @@
 
 <p>Once Mist is open, click on ‘Open Remix IDE’ under Develop menu from main toolbar. The Remix editor will open with default contract, which you can override with below contract. The sample contract is for E-Voting where owner of the contract can add candidate and others can vote for the chosen candidate, we can also find total votes of specific candidate by supplying name of the candidate.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="nx">pragma</span> <span class="nx">solidity</span> <span class="o">^</span><span class="mf">0.4.18</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">pragma</span> <span class="nx">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="p">.</span><span class="mi">18</span><span class="p">;</span>
 
 <span class="nx">contract</span> <span class="nx">EVoting</span> <span class="p">{</span>
  
   <span class="nx">address</span> <span class="kr">public</span> <span class="nx">owner</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">sender</span><span class="p">;</span>
-  <span class="nx">mapping</span> <span class="p">(</span><span class="nx">bytes32</span> <span class="p">=&gt;</span> <span class="nx">uint8</span><span class="p">)</span> <span class="kr">public</span> <span class="nx">votes</span><span class="p">;</span>
+  <span class="nx">mapping</span> <span class="p">(</span><span class="nx">bytes32</span> <span class="o">=&gt;</span> <span class="nx">uint8</span><span class="p">)</span> <span class="kr">public</span> <span class="nx">votes</span><span class="p">;</span>
   
   <span class="nx">bytes32</span><span class="p">[]</span> <span class="kr">public</span> <span class="nx">candidates</span><span class="p">;</span>
 
@@ -222,15 +222,15 @@
 
 <p>Now we have our smart contract ready and we want to deploy it to our network but before doing that we want to make sure that miner is started on our private network. To start the miner, you need to open another terminal window and run below command.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">geth</span> <span class="n">attach</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">geth attach</code></pre></figure>
 
 <p>The above command will open interactive JavaScript console to interact with running blockchain. Once you are in console, you will need to type below command and press enter.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">miner</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="n">2</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">miner.start<span class="o">(</span>2<span class="o">)</span></code></pre></figure>
 
 <p>The number in start method indicates number of threads so you can put any number above 0 based on your processor architecture. There is also stop method as mentioned below to stop the miner.</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span></span><span class="n">miner</span><span class="p">.</span><span class="n">stop</span><span class="p">()</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">miner.stop<span class="o">()</span></code></pre></figure>
 
 <p>Now again you can switch back to Mist and find the ‘CONTRACTS’ tab and click on it. Once you are in ‘CONTRACTS’ tab you will find ‘DEPLOY NEW CONTRACT’ button, which you can click. You can select Main account in ‘FROM’ field and copy paste the smart contract we developed in to ‘SOLIDITY CONTRACT SOURCE CODE’ field. Once the contract is pasted, from right hand side dropdown select ‘EVoting’ as contract under ‘SELECT CONTRACT TO DEPLOY’ panel. Now you can click on ‘DEPLOY’ button, which will open up a dialog box where you need to provide transaction password for main account you created using ‘Geth Account new’ command initially.</p>
 

@@ -119,44 +119,44 @@
 
 <p>There are two code snippets, which are important to understand in this project. The first code snippet is about allowing any browser to access the host by allowing cross origin request for all domains.</p>
 
-<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span></span> <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ConfigureCors</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-c#" data-lang="c#"> <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ConfigureCors</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
  <span class="p">{</span>
-    <span class="n">app</span><span class="p">.</span><span class="n">UseCors</span><span class="p">(</span><span class="n">CorsOptions</span><span class="p">.</span><span class="n">AllowAll</span><span class="p">);</span>
+    <span class="n">app</span><span class="p">.</span><span class="nf">UseCors</span><span class="p">(</span><span class="n">CorsOptions</span><span class="p">.</span><span class="n">AllowAll</span><span class="p">);</span>
  <span class="p">}</span></code></pre></figure>
 
 <p>The second snippet is about creating backplane for SignalR, where we are using service bus so that we can horizontally scale our signalr host. Also we can listen for any new messages on service bus subscription and send those messages to connected client through websocket.</p>
 
-<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span></span><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ConfigureSignalR</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ConfigureSignalR</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">app</span><span class="p">.</span><span class="n">UseAesDataProtectorProvider</span><span class="p">(</span><span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">EncryptionPassword</span><span class="p">);</span>
+    <span class="n">app</span><span class="p">.</span><span class="nf">UseAesDataProtectorProvider</span><span class="p">(</span><span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">EncryptionPassword</span><span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">UseScaleout</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">serviceBusConfig</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceBusScaleoutConfiguration</span><span class="p">(</span><span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">ServiceBusConnectionString</span><span class="p">,</span> 
+        <span class="kt">var</span> <span class="n">serviceBusConfig</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ServiceBusScaleoutConfiguration</span><span class="p">(</span><span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">ServiceBusConnectionString</span><span class="p">,</span> 
             <span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">ServiceBusBackplaneTopic</span><span class="p">);</span>
 
-        <span class="n">GlobalHost</span><span class="p">.</span><span class="n">DependencyResolver</span><span class="p">.</span><span class="n">UseServiceBus</span><span class="p">(</span><span class="n">serviceBusConfig</span><span class="p">);</span>
-        <span class="n">app</span><span class="p">.</span><span class="n">MapSignalR</span><span class="p">();</span>
+        <span class="n">GlobalHost</span><span class="p">.</span><span class="n">DependencyResolver</span><span class="p">.</span><span class="nf">UseServiceBus</span><span class="p">(</span><span class="n">serviceBusConfig</span><span class="p">);</span>
+        <span class="n">app</span><span class="p">.</span><span class="nf">MapSignalR</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="kt">var</span> <span class="n">configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HubConfiguration</span>
      <span class="p">{</span> <span class="n">EnableDetailedErrors</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span> <span class="n">EnableJavaScriptProxies</span> <span class="p">=</span> <span class="k">false</span> <span class="p">};</span>
-    <span class="n">app</span><span class="p">.</span><span class="n">MapSignalR</span><span class="p">(</span><span class="n">configuration</span><span class="p">);</span>
+    <span class="n">app</span><span class="p">.</span><span class="nf">MapSignalR</span><span class="p">(</span><span class="n">configuration</span><span class="p">);</span>
 
     <span class="kt">var</span> <span class="n">connectionString</span> <span class="p">=</span> <span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">ServiceBusConnectionString</span><span class="p">;</span>
     <span class="kt">var</span> <span class="n">topicName</span> <span class="p">=</span> <span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">ServiceBusNotificationTopic</span><span class="p">;</span>
     <span class="kt">var</span> <span class="n">topicSubscriptionName</span> <span class="p">=</span> <span class="n">SignalRHostConfiguration</span><span class="p">.</span><span class="n">TopicSubscriptionName</span><span class="p">;</span>
 
     <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> 
-    <span class="n">SubscriptionClient</span><span class="p">.</span><span class="n">CreateFromConnectionString</span><span class="p">(</span><span class="n">connectionString</span><span class="p">,</span> 
+    <span class="n">SubscriptionClient</span><span class="p">.</span><span class="nf">CreateFromConnectionString</span><span class="p">(</span><span class="n">connectionString</span><span class="p">,</span> 
     <span class="n">topicName</span><span class="p">,</span> <span class="n">topicSubscriptionName</span><span class="p">);</span>
 
-    <span class="n">client</span><span class="p">.</span><span class="n">OnMessage</span><span class="p">(</span><span class="n">message</span> <span class="p">=&gt;</span>
+    <span class="n">client</span><span class="p">.</span><span class="nf">OnMessage</span><span class="p">(</span><span class="n">message</span> <span class="p">=&gt;</span>
     <span class="p">{</span>
         <span class="kt">var</span> <span class="n">notificationHubContext</span> <span class="p">=</span> 
         <span class="n">GlobalHost</span><span class="p">.</span><span class="n">ConnectionManager</span><span class="p">.</span><span class="n">GetHubContext</span><span class="p">&lt;</span><span class="n">AbilityNotificationHub</span><span class="p">&gt;();</span>
         <span class="n">notificationHubContext</span><span class="p">.</span><span class="n">Clients</span><span class="p">.</span><span class="n">All</span>
-        <span class="p">.</span><span class="n">showNotificationInPage</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">GetBody</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;());</span>
+        <span class="p">.</span><span class="nf">showNotificationInPage</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">GetBody</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;());</span>
     <span class="p">});</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -164,26 +164,26 @@
 
 <p>From this project, we want to send custom messages to service bus topic so that above mentioned SignalR host service can listen to those messages. The stateless service provides us entry point to run our service and we will be using it as below to send custom message every 15 seconds.</p>
 
-<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span></span><span class="k">protected</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">RunAsync</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">cancellationToken</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">protected</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">RunAsync</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">cancellationToken</span><span class="p">)</span>
 <span class="p">{</span>
     
     <span class="kt">long</span> <span class="n">iterations</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
 
     <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="n">cancellationToken</span><span class="p">.</span><span class="n">ThrowIfCancellationRequested</span><span class="p">();</span>
+        <span class="n">cancellationToken</span><span class="p">.</span><span class="nf">ThrowIfCancellationRequested</span><span class="p">();</span>
 
-        <span class="n">ServiceEventSource</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">ServiceMessage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">Context</span><span class="p">,</span> <span class="s">&quot;Working-{0}&quot;</span><span class="p">,</span> <span class="p">++</span><span class="n">iterations</span><span class="p">);</span>
+        <span class="n">ServiceEventSource</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="nf">ServiceMessage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">Context</span><span class="p">,</span> <span class="s">"Working-{0}"</span><span class="p">,</span> <span class="p">++</span><span class="n">iterations</span><span class="p">);</span>
 
         <span class="kt">var</span> <span class="n">connectionString</span> <span class="p">=</span> <span class="n">DispatcherConfiguration</span><span class="p">.</span><span class="n">ServiceBusConnectionString</span><span class="p">;</span>
         <span class="kt">var</span> <span class="n">topicName</span> <span class="p">=</span> <span class="n">DispatcherConfiguration</span><span class="p">.</span><span class="n">ServiceBusNotificationTopic</span><span class="p">;</span>
 
-        <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="n">TopicClient</span><span class="p">.</span><span class="n">CreateFromConnectionString</span><span class="p">(</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">topicName</span><span class="p">);</span>
-        <span class="kt">var</span> <span class="n">dtTime</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&quot;MM/dd/yyyy HH:mm:ss.fff&quot;</span><span class="p">,</span> <span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">);</span>
-        <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BrokeredMessage</span><span class="p">(</span><span class="s">&quot;This is a test message generated on &quot;</span> <span class="p">+</span> <span class="n">dtTime</span><span class="p">);</span>
-        <span class="n">client</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="n">TopicClient</span><span class="p">.</span><span class="nf">CreateFromConnectionString</span><span class="p">(</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">topicName</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">dtTime</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="nf">ToString</span><span class="p">(</span><span class="s">"MM/dd/yyyy HH:mm:ss.fff"</span><span class="p">,</span> <span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">BrokeredMessage</span><span class="p">(</span><span class="s">"This is a test message generated on "</span> <span class="p">+</span> <span class="n">dtTime</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="nf">Send</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
 
-        <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">15</span><span class="p">),</span> <span class="n">cancellationToken</span><span class="p">);</span>
+        <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="nf">Delay</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromSeconds</span><span class="p">(</span><span class="m">15</span><span class="p">),</span> <span class="n">cancellationToken</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -191,11 +191,11 @@
 
 <p>In this project, signalr javascript client is used to connect with signalr host and as soon as message is received, we are appending those messages in web page. Following is the code snippet where we are connecting with the host and reading the received messages.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">hubConnection</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span> <span class="o">+</span> <span class="nx">signalRHost</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">abilityNotificationHubProxy</span> <span class="o">=</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">createHubProxy</span><span class="p">(</span><span class="s1">&#39;abilityNotificationHub&#39;</span><span class="p">);</span>
-    <span class="nx">abilityNotificationHubProxy</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;showNotificationInPage&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#notificationArea&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">message</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">hubConnection</span><span class="p">(</span><span class="s2">"http://"</span> <span class="o">+</span> <span class="nx">signalRHost</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">abilityNotificationHubProxy</span> <span class="o">=</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">createHubProxy</span><span class="p">(</span><span class="s1">'abilityNotificationHub'</span><span class="p">);</span>
+    <span class="nx">abilityNotificationHubProxy</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'showNotificationInPage'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#notificationArea"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">message</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">"&lt;br/&gt;"</span><span class="p">);</span>
     <span class="p">});</span>
     <span class="nx">connection</span><span class="p">.</span><span class="nx">start</span><span class="p">().</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="c1">// send notification to the server.</span>
